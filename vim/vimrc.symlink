@@ -1,0 +1,333 @@
+" Vim Settings {
+"
+"   This is the personal vim config of Pete McWilliams (aka petemcw).
+"
+"   Author: Pete McWilliams, http://petemcw.com/
+"      URL: https://github.com/petemcw/dotfiles
+"
+" }
+set nocompatible
+filetype off
+
+" Bundles {
+  source $HOME/.vim-bundles
+" }
+
+let mapleader="\<Space>"
+
+" Powerline for Vim {
+  python from powerline.vim import setup as powerline_setup
+  python powerline_setup()
+  python del powerline_setup
+  let g:Powerline_symbols = 'fancy'
+"}
+
+" General Configuration Settings {
+  " Colors {
+    colorscheme solarized
+    set background=dark
+  " }
+
+  " Automatically set the background based on the time of day
+  " Thanks to Benjamin Tan: http://goo.gl/UcErBh
+  let hour = strftime("%H")
+  if 6 <= hour && hour < 18
+    set background=light
+  else
+    set background=dark
+  endif
+
+  " Set cursor shape
+  if &term =~ '^xterm'
+    " blinking underscore
+    let &t_SI .= "\<Esc>[3 q"
+  endif
+
+  " Allow backspacing over everything
+  set backspace=indent,eol,start
+
+  filetype plugin indent on " Automatically detect file types.
+  syntax enable             " Syntax highlighting
+  set history=1000          " Store a ton of history (default is 20)
+  set hidden                " Allow buffer switching without saving
+  set number                " Display line numbers
+  set cursorline            " Highlight the current line
+  set laststatus=2
+  ""set noshowmode
+  ""set fillchars+=stl:\ ,stlnc:\
+  ""set modelines=0
+  set shiftwidth=2
+  ""set clipboard=unnamed
+  ""set synmaxcol=128
+  ""set ttyscroll=10
+  set expandtab
+  set tabstop=4
+  set softtabstop=4
+  set ruler
+  set nowrap                " Don't wrap text by default
+  set nowritebackup
+  set noswapfile
+  set nobackup
+  set incsearch
+  set hlsearch
+  set ignorecase
+  set showmatch
+  set matchtime=2
+  ""set smartcase
+  ""set smarttab
+  ""set tags=tags
+  set autoindent
+  set showcmd               " Show partial commands on status line
+  set encoding=utf-8        " Set file encoding to utf-8
+  ""scriptencoding utf-8
+  set autowrite             " Save on buffer switch
+  set autoread              " Check when a file is edited by another program
+  set visualbell            " Disable beeping and visual notification
+  set updatetime=250        " Lower update time to 250 ms
+" }
+
+
+" Plugins {
+  " vim-markdown {
+    " Highlight YAML frontmatter as used by Jekyll
+    let g:vim_markdown_frontmatter=1
+    " Disable Markdown folding
+    let g:vim_markdown_folding_disabled=1
+  " }
+
+  " Syntastic
+    let g:syntastic_mode_map = { 'mode': 'passive' }
+    let g:syntastic_ruby_exec = '/usr/local/opt/rbenv/shims/ruby'
+  " }
+" }
+
+
+" Automatic settings {
+  autocmd BufWritePre *.rb :%s/\s\+$//e
+  autocmd BufWritePre *.go :%s/\s\+$//e
+  autocmd BufWritePre *.haml :%s/\s\+$//e
+  autocmd BufWritePre *.html :%s/\s\+$//e
+  autocmd BufWritePre *.scss :%s/\s\+$//e
+  autocmd BufWritePre *.slim :%s/\s\+$//e
+  autocmd BufWritePre *.php :%s/\s\+$//e
+
+  " Configurations for PHP files
+  autocmd BufNewFile,BufReadPost *.php set filetype=php
+
+  " enable spell checking in git commit messages
+  autocmd FileType gitcommit setlocal spell
+  autocmd BufRead,BufNewFile {COMMIT_EDITMSG} set ft=gitcommit
+
+  " PHP settings {
+    " PHP shortcuts
+    "autocmd FileType php inoremap <C--> ->
+    "autocmd FileType php inoremap <C-=>> =>
+
+    " PHP Parsing & Checking commands
+    autocmd FileType php noremap <buffer> <C-M> :w!<CR>:!php %<CR>
+    autocmd FileType php noremap <buffer> <LocalLeader>l :w!<CR>:!php -l %<CR>
+
+    " Highlight interpolated variables in SQL strings & SQL-syntax highlighting
+    autocmd FileType php let php_sql_query=1
+
+    " Highlight HTML inside of PHP strings
+    autocmd FileType php let php_htmlInStrings=1
+
+    " Discourages use of short tags.
+    autocmd FileType php let php_noShortTags=1
+
+    autocmd FileType php setlocal ts=4 sts=4 sw=4
+
+    " Strip trailing white space from .php files
+    autocmd BufWritePre *.php :%s/\s\+$//e
+
+    " Indentation rules
+    autocmd FileType php set expandtab
+
+    " PHPDoc settings
+    if !exists("g:pdv_cfg_Author")
+      let g:pdv_cfg_Author = "Peter McWilliams <petemcw@gmail.com>"
+    endif
+  " }
+
+  " Markdown {
+    " Configurations for Markdown files
+    autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+
+    " Automatically remove trailing whitespace on Markdown files
+    autocmd BufWritePre *.md :%s/\s\+$//e
+
+    " Also setting text files as Markdown, effectively, as the same rules
+    " largely apply
+    autocmd BufNewFile,BufReadPost *.txt set filetype=markdown
+  " }
+
+  " Javascript {
+    " 2 space indents
+    autocmd FileType javascript setlocal ts=2 sts=2 sw=2
+  " }
+
+  " Coffeescript {
+    " 2 space indents
+    autocmd FileType coffee setlocal ts=2 sts=2 sw=2
+  " }
+
+  " HTML {
+    " 4 space indents
+    autocmd FileType html setlocal ts=4 sts=4 sw=4
+  " }
+
+  " HAML & SASS {
+    autocmd FileType haml set nowrap
+    autocmd FileType sass set textwidth=0
+  " }
+" }
+
+
+" Key (re)Mappings {
+  " Quick ESC from insert mode
+  imap jj <ESC>
+
+  " Jump to the next row on long lines
+  map <Down> gj
+  map <Up>   gk
+  nnoremap j gj
+  nnoremap k gk
+
+  " Switch windows with Ctrl + a movement key
+  nnoremap <C-h> <C-w>h
+  nnoremap <C-j> <C-w>j
+  nnoremap <C-k> <C-w>k
+  nnoremap <C-l> <C-w>l
+
+  " Resize buffers
+  if bufwinnr(1)
+    nmap Ä <C-W>< <C-W><
+    nmap Ö <C-W>> <C-W>>
+    nmap ö <C-W>- <C-W>-
+    nmap ä <C-W>+ <C-W>+
+  endif
+
+  " format the entire file
+  nmap <leader>fef ggVG=
+
+  " Upper/lowercase the word
+  nmap <silent> <leader>u mQviwU`Q
+  nmap <silent> <leader>l mQviwu`Q
+
+  " Upper/lowercase first character of word
+  nmap <silent> <leader>U mQgewvU`Q
+  nmap <silent> <leader>L mQgewvu`Q
+
+  " Clear highlighted search
+  nmap <silent> <leader>/ :nohlsearch<CR>
+
+  " Map the buffer list
+  nmap <leader>b :ls
+
+  " Fast saves
+  nmap <leader>w :w!<cr>
+
+  " Edit composer.json
+  nmap <leader>lc :e composer.json<cr>
+
+  " Find merge conflict markers
+  nmap <silent> <leader>fc <ESC>/\v^[<=>]{7}( .*\|$)<CR>
+
+  " Open new buffers
+  nmap <leader>s<left>   :leftabove  vnew<cr>
+  nmap <leader>s<right>  :rightbelow vnew<cr>
+  nmap <leader>s<up>     :leftabove  new<cr>
+  nmap <leader>s<down>   :rightbelow new<cr>
+
+  " Tab between buffers
+  noremap <tab> <c-w><c-w>
+
+  " Switch between last two buffers
+  nnoremap <leader><leader> <C-^>
+
+  " Rapidly toggle 'set list'
+  nmap <leader>ll :set list!<CR>
+
+  " Key for paste mode
+  nmap <leader>pp :set paste!<CR>
+
+  " Toggle line numbers
+  nmap <leader>nn :set nonumber!<CR>
+
+  " make external keypad work in terminal vim OSX
+  map <Esc>Oq 1
+  map <Esc>Or 2
+  map <Esc>Os 3
+  map <Esc>Ot 4
+  map <Esc>Ou 5
+  map <Esc>Ov 6
+  map <Esc>Ow 7
+  map <Esc>Ox 8
+  map <Esc>Oy 9
+  map <Esc>Op 0
+  map <Esc>On .
+  map <Esc>OQ /
+  map <Esc>OR *
+  map <kPlus> +
+  map <Esc>OS -
+  map! <Esc>Oq 1
+  map! <Esc>Or 2
+  map! <Esc>Os 3
+  map! <Esc>Ot 4
+  map! <Esc>Ou 5
+  map! <Esc>Ov 6
+  map! <Esc>Ow 7
+  map! <Esc>Ox 8
+  map! <Esc>Oy 9
+  map! <Esc>Op 0
+  map! <Esc>On .
+  map! <Esc>OQ /
+  map! <Esc>OR *
+  map! <kPlus> +
+  map! <Esc>OS -
+
+  " Forget sudo?
+  cmap w!! w !sudo tee % >/dev/null
+
+  " Remap ':' to ';' - Saves two strokes
+  nnoremap ; :
+
+  " Quickly open the vim config file in a new tab.
+  nmap <leader>v :tabedit $MYVIMRC<CR>
+" }
+
+" Quit with :Q
+command -nargs=0 Quit :qa!
+
+" Override PHP syntax highligting within DocBlocks
+" For use with StanAngeloff/php.vim
+function! PhpSyntaxOverride()
+  hi! def link phpDocTags  phpDefine
+  hi! def link phpDocParam phpType
+endfunction
+augroup phpSyntaxOverride
+  autocmd!
+  autocmd FileType php call PhpSyntaxOverride()
+augroup END
+
+
+
+" vim-pencil configuration
+" For further options see https://github.com/reedes/vim-pencil
+" let g:pencil#wrapModeDefault = 'soft'   " default is 'hard'
+""augroup pencil
+""  autocmd!
+""  autocmd FileType markdown,mkd,md call pencil#init({'wrap': 'soft'})
+""                              \ | call lexical#init()
+""                              \ | call litecorrect#init()
+""                              \ | call textobj#quote#init()
+""                              \ | call textobj#sentence#init()
+""  autocmd FileType markdown,mkd,md call SetMarkdownOptions()
+""  autocmd FileType text            call pencil#init({'wrap': 'soft'})
+""augroup END
+
+""function SetMarkdownOptions()
+""  setlocal spell spelllang=en_us
+""  nmap <leader>l <Plug>Ysurroundiw]%a(<C-R>*)<Esc>
+""endfunction

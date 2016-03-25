@@ -1,0 +1,57 @@
+" Vundle plugin manager {
+"   http://www.erikzaadi.com/2012/03/19/auto-installing-vundle-from-your-vimrc/
+" }
+
+let has_vundle=1
+if !filereadable($HOME."/.vim/bundle/vundle/README.md")
+  echo 'Installing Vundle...'
+  echo ''
+  silent !mkdir -p $HOME/.vim/bundle
+  silent !git clone https://github.com/VundleVim/Vundle.vim.git $HOME/.vim/bundle/vundle.vim
+  let has_vundle=0
+endif
+
+" Initialize Vundle
+set rtp+=$HOME/.vim/bundle/vundle.vim
+call vundle#begin()
+
+" Bundles {
+
+  " Vundle can manage Vundle
+  Plugin 'gmarik/vundle'
+
+  " General
+  Plugin 'tpope/vim-sensible'
+""  Plugin 'bling/vim-airline'
+  Plugin 'Lokaltog/vim-easymotion'
+  Plugin 'Townk/vim-autoclose'
+
+  " Development
+  Plugin 'sheerun/vim-polyglot'
+
+  " PHP Development
+  Plugin 'StanAngeloff/php.vim'
+
+  " Twig/Slim
+  Plugin 'lunaru/vim-twig'
+
+  " Version Control
+  Plugin 'airblade/vim-gitgutter'
+
+  " Themes
+  Plugin 'altercation/vim-colors-solarized'
+
+  " Writing plugins
+  Plugin 'godlygeek/tabular'
+  Plugin 'plasticboy/vim-markdown'
+
+" }
+
+call vundle#end()
+
+" Installing plguins the first time
+if has_vundle == 0
+  echo 'Installing Bundles, please ignore key map error messages'
+  echo ''
+  :PluginInstall
+endif
