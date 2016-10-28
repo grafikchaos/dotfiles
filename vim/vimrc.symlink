@@ -1,9 +1,9 @@
 " Vim Settings {
 "
-"   This is the personal vim config of Pete McWilliams (aka petemcw).
+"   This is the personal vim config of Josh Johnson (aka grafikchaos).
 "
-"   Author: Pete McWilliams, http://petemcw.com/
-"      URL: https://github.com/petemcw/dotfiles
+"   Author: Josh Johnson
+"      URL: https://github.com/grafikchaos/dotfiles
 "
 " }
 set nocompatible
