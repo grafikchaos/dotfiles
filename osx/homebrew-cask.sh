@@ -9,14 +9,14 @@ function cask() {
 }
 
 cask 1password
-cask alfred
 cask appcleaner
+cask atom
 cask bartender
 cask bettertouchtool
-cask calibre
 cask clipmenu
 cask colloquy
 cask dropbox
+cask daisydisk
 cask evernote
 cask flux
 cask firefox
@@ -25,18 +25,15 @@ cask handbrake
 cask iterm2
 cask kindle
 cask logitech-control-center
-cask minecraft
+cask navicat-for-postgresql
+cask navicat-for-oracle
 cask panic-unison
-cask phpstorm-eap
-cask plex-home-theater
 cask postgres
 cask sequel-pro
 cask sketchup
-cask skype
 cask slack
-cask sonos
 cask spotify
-cask steam
+cask sqlpro-for-mssql
 cask sublime-text3
 cask superduper
 cask transmission

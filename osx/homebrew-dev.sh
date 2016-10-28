@@ -7,6 +7,9 @@ echo "  Installing development brews.\n "
 # common packages
 brew install ansible
 brew install dnsmasq
+brew install composer
+brew install n98-magerun
+brew install n98-magerun2
 brew install drush
 brew install git
 brew install git-flow
@@ -17,6 +20,7 @@ brew install lynx
 brew install mcrypt
 brew install nginx
 brew install ngrok
+brew install imagemagick
 brew install node
 brew install percona-server
 brew install redis
