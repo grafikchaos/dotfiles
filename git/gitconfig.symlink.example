@@ -1,10 +1,10 @@
 [user]
-    name = AUTHOR_NAME
+    name  = AUTHOR_NAME
     email = AUTHOR_EMAIL
 
 [github]
-    username = GITHUB_USERNAME
-    token = GITHUB_TOKEN
+    username  = GITHUB_USERNAME
+    token     = GITHUB_TOKEN
 
 [filter "lfs"]
     clean = git lfs clean %f
@@ -17,7 +17,7 @@
 [alias]
     co   = checkout
     st   = status
-    br   = branch -av 
+    br   = branch -av
     ci   = commit
     go   = "!f() { git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\"; }; f"
     tags = tag -l
@@ -30,13 +30,13 @@
     # diff a revision
     dr   = "!f() { git diff "$1"^.."$1"; }; f"
     # modified in last commit
-    dl   = "!git ll -1" 
+    dl   = "!git ll -1"
     ########
     sa   = stash apply
     sc   = stash clear
     sd   = stash drop
     sl   = stash list
-    sp   = stash pop 
+    sp   = stash pop
     ss   = stash save
     sw   = stash show
     ########
@@ -47,7 +47,7 @@
     fl   = log -u
     ########
     amend   = !git log -n 1 --pretty=tformat:%s%n%n%b | git commit -F - --amend
-    count   = !git shortlog -sn 
+    count   = !git shortlog -sn
     human   = name-rev --name-only --refs=refs/heads/*
     in      = pull --dry-run
     out     = log --branches --not --remotes
@@ -63,7 +63,7 @@
 
 [color "branch"]
     current = yellow reverse
-    local = yello
+    local = yellow
     remote = green
 
 [color "diff"]
