@@ -21,8 +21,8 @@ DATETIME=`date -u +"%Y%m%d%H%M.%S"`
 REQUIRED_TOOLS="git grep sed tee zsh"
 DOTFILES_ROOT="${HOME}/.dotfiles"
 DOTFILES_BAK="${HOME}/.backups/${DATETIME}"
-DOTFILES_REPO="https://github.com/petemcw/dotfiles.git"
-DOTFILES_BRANCH="dockerize"
+DOTFILES_REPO="https://github.com/grafikchaos/dotfiles.git"
+DOTFILES_BRANCH="mydots"
 source $DOTFILES_ROOT/helpers.sh
 
 #
