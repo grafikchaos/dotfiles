@@ -46,17 +46,24 @@
     ld   = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=relative
     fl   = log -u
     ########
-    amend   = !git log -n 1 --pretty=tformat:%s%n%n%b | git commit -F - --amend
-    count   = !git shortlog -sn
-    human   = name-rev --name-only --refs=refs/heads/*
-    in      = pull --dry-run
-    out     = log --branches --not --remotes
-    r       = !git ls-files -z --deleted | xargs -0 git rm
-    retag   = "!r() { git tag -d $1 && git push origin :refs/tags/$1 && git tag $1; }; r"
-    root    = rev-parse --show-toplevel
-    this    = !git init && git add . && git commit -m \"Initial commit.\"
-    trim    = !git reflog expire --expire=now --all && git gc --prune=now
-    unstage = reset HEAD --
+    amend       = !git log -n 1 --pretty=tformat:%s%n%n%b | git commit -F - --amend
+    count       = !git shortlog -sn
+    human       = name-rev --name-only --refs=refs/heads/*
+    in          = pull --dry-run
+    out         = log --branches --not --remotes
+    r           = !git ls-files -z --deleted | xargs -0 git rm
+    retag       = "!r() { git tag -d $1 && git push origin :refs/tags/$1 && git tag $1; }; r"
+    root        = rev-parse --show-toplevel
+    this        = !git init && git add . && git commit -m \"Initial commit.\"
+    trim        = !git reflog expire --expire=now --all && git gc --prune=now
+    unstage     = reset HEAD --
+    ignored     = !git ls-files -v | grep "^[[:lower:]]
+    ignore      = update-index --assume-unchanged
+    unignore    = update-index --no-assume-unchanged
+    hide        = update-index --assume-unchanged
+    unhide      = update-index --no-assume-unchanged
+    unhide-all  = update-index --really-refresh
+    hidden      = !git ls-files -v | grep \"^[a-z]\"
 
 [color]
     ui = true

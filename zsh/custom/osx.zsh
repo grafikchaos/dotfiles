@@ -3,6 +3,13 @@ alias pubkey="more ~/.ssh/id_rsa.pub | pbcopy | echo '=> Public key copied to pa
 
 # shorten up n98
 alias n="n98-magerun"
+alias n2="n98-magerun2"
+
+# git
+alias g="git"
+alias gs="git status"
+alias gb="git branch"
+
 
 # update lookup database
 alias updatedb="sudo /usr/libexec/locate.updatedb"
@@ -25,24 +32,25 @@ alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && 
 alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
 
 # redis
-alias redis.start="launchctl load ~/Library/LaunchAgents/homebrew.mxcl.redis.plist"
-alias redis.stop="launchctl unload ~/Library/LaunchAgents/homebrew.mxcl.redis.plist"
+alias redis.start="brew services start redis"
+alias redis.stop="brew services stop redis"
+alias redis.restart="brew services restart redis"
+alias redis.status="/usr/local/bin/redis-cli status"
 
 # dns
-alias dns.start="sudo launchctl load -w /Library/LaunchDaemons/homebrew.mxcl.dnsmasq.plist"
-alias dns.stop="sudo launchctl unload -w /Library/LaunchDaemons/homebrew.mxcl.dnsmasq.plist"
+alias dns.start="sudo brew services start dnsmasq"
+alias dns.stop="sudo brew services stop dnsmasq"
+alias dns.restart="sudo brew services restart dnsmasq"
+alias dns.flush="flush-dns"
 
 # nginx
-alias nginx.start="sudo launchctl load -w /Library/LaunchAgents/homebrew.mxcl.nginx.plist"
-alias nginx.stop="sudo launchctl unload -w /Library/LaunchAgents/homebrew.mxcl.nginx.plist"
-alias nginx.reload="/usr/local/bin/nginx -s reload"
-alias vhosts="cd /usr/local/etc/nginx/sites-enabled"
-
-# php
-alias php.start="launchctl load -w ~/Library/LaunchAgents/homebrew.mxcl.php55.plist"
-alias php.stop="launchctl unload -w ~/Library/LaunchAgents/homebrew.mxcl.php55.plist"
+alias nginx.start="sudo brew services start nginx"
+alias nginx.stop="sudo brew services stop nginx"
+alias nginx.restart="sudo brew services restart nginx"
+alias nginx.reload="sudo /usr/local/bin/nginx -s reload"
+alias vhosts="cd /etc/nginx/sites-enabled"
 
 # percona
-alias percona.start="launchctl load -w ~/Library/LaunchAgents/homebrew.mxcl.percona-server.plist"
-alias percona.stop="launchctl unload -w ~/Library/LaunchAgents/homebrew.mxcl.percona-server.plist"
-
+alias percona.start="brew services start percona-server"
+alias percona.stop="brew services stop percona-server"
+alias percona.restart="brew services restart percona-server"
