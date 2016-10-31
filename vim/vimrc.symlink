@@ -10,7 +10,7 @@ set nocompatible
 filetype off
 
 " Bundles {
-  source $HOME/.vim-bundles
+  "source $HOME/.vim-bundles
 " }
 
 let mapleader="\<Space>"
@@ -24,7 +24,7 @@ let mapleader="\<Space>"
 
 " General Configuration Settings {
   " Colors {
-    colorscheme solarized
+    "colorscheme solarized
     set background=dark
   " }
 
