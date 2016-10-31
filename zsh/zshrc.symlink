@@ -66,3 +66,6 @@ then
     source "$HOME/.localrc"
 fi
 
+# rbenv support
+eval "$(rbenv init -)"
+
