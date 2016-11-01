@@ -23,6 +23,7 @@ cask firefox
 cask google-chrome
 cask handbrake
 cask iterm2
+cask java
 cask kindle
 cask logitech-control-center
 cask navicat-for-postgresql
