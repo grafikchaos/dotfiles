@@ -64,10 +64,28 @@ function psu {
 }
 
 function memcpu() {
-    echo "\n*** Top 10 CPU eating processes ***"; 
+    echo "\n*** Top 10 CPU eating processes ***";
     ps auxc | sort -nr -k 3 | head -10;
     echo "\n";
-    echo "*** TOP 10 memory eating processes ***"; 
+    echo "*** TOP 10 memory eating processes ***";
     ps auxc | sort -nr -k 4 | head -10;
 }
 
+
+function change_trigger_definer() {
+  echo "perl -pi -e 's/DEFINER\=\`$1\`/DEFINER\=\`$2\`/g' $3"
+}
+
+
+function add_ssh_key() {
+  USER="$1"
+  HOST="$2"
+
+  echo "Run this command: "
+  echo "cat ~/.ssh/id_rsa.pub | ssh $USER@$HOST \"mkdir -p ~/.ssh; cat >> ~/.ssh/authorized_keys; chmod 700 ~/.ssh; chmod 600 ~/.ssh/authorized_keys\""
+}
+
+# Grep Processes
+function psx() {
+  ps auxw | grep --color=always $1 | grep -v 'grep';
+}
