@@ -89,3 +89,15 @@ function add_ssh_key() {
 function psx() {
   ps auxw | grep --color=always $1 | grep -v 'grep';
 }
+
+# Install Magento 2 CE via composer
+function m2ce_install() {
+    PROJECT_DIR="$1"
+
+    echo "====================================================================="
+    echo "Fetching Magento 2 CE from https://repo.magento.com and installing it in the $1 directory"
+    echo "See http://devdocs.magento.com/guides/v2.0/install-gde/prereq/integrator_install.html#integrator-first-composer-ce for more details including how to get your authentication keys"
+    echo "====================================================================="
+
+    composer create-project --repository-url=https://repo.magento.com/ magento/project-community-edition "$PROJECT_DIR"
+}
