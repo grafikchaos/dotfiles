@@ -6,7 +6,7 @@ alias n="n98-magerun"
 alias n2="n98-magerun2"
 
 # Magedownload-cli (https://github.com/steverobbins/magedownload-cli)
-alias magedownload="$HOME/.bin/magedownload.phar"
+#alias magedownload="$HOME/.bin/magedownload.phar"
 
 # git
 alias g="git"
