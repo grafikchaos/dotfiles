@@ -37,9 +37,9 @@ brew install php70-xdebug
 brew install php70-intl
 
 # Or https://www.docker.com/toolbox
-brew install docker
-brew install docker-machine
-brew install docker-compose
+#brew install docker
+#brew install docker-machine
+#brew install docker-compose
 
 # remove outdated versions
 brew cleanup

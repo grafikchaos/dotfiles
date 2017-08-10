@@ -3,6 +3,7 @@
 # This installs some native OS X apps
 
 brew tap caskroom/cask
+brew tap caskroom/fonts
 
 function cask() {
     brew cask install "${@}" 2> /dev/null
@@ -12,16 +13,14 @@ cask 1password
 cask appcleaner
 cask atom
 cask bartender
-cask bettertouchtool
 cask clipmenu
-cask colloquy
 cask dropbox
 cask daisydisk
 cask evernote
-cask flux
 cask firefox
+cask flux
+cask font-hack-nerd-font
 cask google-chrome
-cask handbrake
 cask iterm2
 cask java
 cask kindle
@@ -39,7 +38,6 @@ cask sublime-text3
 cask superduper
 cask transmission
 cask transmit
-cask tunnelbear
 cask virtualbox
 cask virtualbox-extension-pack
 cask vagrant
