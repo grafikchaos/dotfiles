@@ -5,7 +5,7 @@
 echo "  Installing development brews.\n "
 
 # common packages
-brew install ansible19
+brew install ansible@1.9
 brew install dnsmasq
 brew install composer
 brew install n98-magerun
