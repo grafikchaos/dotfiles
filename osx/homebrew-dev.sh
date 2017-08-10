@@ -25,6 +25,12 @@ brew install imagemagick
 brew install node
 brew install percona-server
 brew install redis
+brew install php53 --with-fpm --without-apache --with-homebrew-curl --with-homebrew-openssl --without-snmp --with-mysql
+brew install php53-ioncubeloader
+brew install php53-mcrypt
+brew install php53-redis
+brew install php53-intl
+brew unlink php53
 brew install php56 --with-fpm --without-apache --with-homebrew-curl --with-homebrew-openssl --without-snmp --with-mysql
 brew install php56-ioncubeloader
 brew install php56-mcrypt
