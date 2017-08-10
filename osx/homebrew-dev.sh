@@ -14,6 +14,7 @@ brew install drush
 brew install git
 brew install git-flow
 brew install git-lfs
+brew install ghi
 brew install heroku-toolbelt
 brew install jq
 brew install lynx
